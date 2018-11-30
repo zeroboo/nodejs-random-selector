@@ -1,0 +1,29 @@
+{
+  "name": "nodejs-ramdom-selector",
+  "version": "1.0.0",
+  "description": "Randomly select elements in a collection.",
+  "main": "./src/random-selector.js",
+  "scripts": {
+    "test": "./test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeroboo/nodejs-random-selector.git"
+  },
+  "keywords": [
+    "randomize",
+    "random",
+    "random",
+    "duplication",
+    "random",
+    "pick",
+    "random",
+    "select"
+  ],
+  "author": "zeroboo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zeroboo/nodejs-random-selector/issues"
+  },
+  "homepage": "https://github.com/zeroboo/nodejs-random-selector#readme"
+}
