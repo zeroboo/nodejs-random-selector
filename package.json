@@ -1,6 +1,6 @@
 {
-  "name": "nodejs-ramdom-selector",
-  "version": "1.0.0",
+  "name": "random-selector",
+  "version": "0.0.1",
   "description": "Randomly select elements in a collection.",
   "main": "./src/random-selector.js",
   "scripts": {
@@ -18,12 +18,22 @@
     "random",
     "pick",
     "random",
-    "select"
+    "select",
+    "random sample",
+    "sampling",
+    "random-utility",
+    "collection random",
+    "random collection",
+    "random element"
   ],
   "author": "zeroboo",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/zeroboo/nodejs-random-selector/issues"
   },
-  "homepage": "https://github.com/zeroboo/nodejs-random-selector#readme"
+  "homepage": "https://github.com/zeroboo/nodejs-random-selector#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
 }
