@@ -1,0 +1,11 @@
+class Randomer
+{
+    constructor(){
+
+    }
+
+    getRandomInt()
+    {
+
+    }
+}

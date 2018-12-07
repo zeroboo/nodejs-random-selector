@@ -1,15 +1,14 @@
 global.__base = __dirname + '/';
 console.log("Current folder: ", global.__base);
-const RandomSelector = require("./randomSelector");
+const RandomSelector = require("./index");
 
-var selector = new RandomSelector();
 
 var balls = Array()[{color: 'red'}
     , {color: 'red'}
     , {color: 'red'}
 ];
 
-var selector = new RandomSelector([
+var selector = RandomSelector.createRandomSelector([
         [{color: 'red'}, 1000]
         , [{color: 'red'}, 1000]
     ]
