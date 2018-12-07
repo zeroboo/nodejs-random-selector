@@ -2,9 +2,10 @@
   "name": "random-selector",
   "version": "0.0.1",
   "description": "Randomly select elements in a collection.",
-  "main": "./src/random-selector.js",
+  "main": "src/randomSelector.js",
   "scripts": {
-    "test": "./test/test.js"
+    "test": "mocha",
+    "start": "node src/demo.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
   "homepage": "https://github.com/zeroboo/nodejs-random-selector#readme",
   "dependencies": {
     "chai": "^4.2.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "morgan": "^1.9.1"
   }
 }
