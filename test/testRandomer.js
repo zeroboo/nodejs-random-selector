@@ -8,6 +8,7 @@ describe('Test randomer', function() {
      {
         console.log("beforeSuite!", __dirname);
         randomer = new Randomer();
+        Randomer.prototype.DEBUG = true;
       });
     beforeEach(function() {
         

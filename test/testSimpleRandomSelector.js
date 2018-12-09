@@ -1,9 +1,13 @@
 var randomSelector = require('../src/index');
 const assert = require('chai').assert;
 const expect = require('chai').expect;
+var RandomSelector = require('../src/randomSelector');
+
+
 describe('Test random-selector constructing', function() {
   before(function() {
     console.log("BeforeSuite!");
+    RandomSelector.prototype.DEBUG = true;
   });
   beforeEach(function() {
     console.log("BeforeTest!");
@@ -86,16 +90,16 @@ describe('Test random-selector constructing', function() {
     it("Select mix array: can return undefined", function(){
       var elements = ['hello','world','!', 1, 2, 3, 5, null, undefined];
       var selector = randomSelector.createSimpleRandomSelector(elements);
-      var hasNull = false;
+      var hasUndefined = false;
       for(var i=0;i<1000;i++){
         var selectedElement = selector.selectAndReplace();
         if(selectedElement == null)
         {
-          hasNull = true;
+          hasUndefined = true;
           break;
         }
       }
-      assert.isTrue(hasNull);
+      assert.isTrue(hasUndefined);
     });
     it("Select not return null if there is no null element", function(){
       var elements = ['hello','world','!', 1, 2, 3, 5];

@@ -4,13 +4,8 @@ var Randomer = require('./randomer');
 var RandomSelector = require('./randomSelector');
 
 var DEBUG_RANDOM_SELECTOR_FACTORY = true;
-Object.defineProperties(RandomSelector, {
-    'DEBUG': {
-      value: true,
-      writable: false
-    },
-  });
-RandomSelector.prototype.DEBUG = true;
+RandomSelector.prototype.DEBUG = false;
+
 function RandomSelectorFactory() {
 
    
