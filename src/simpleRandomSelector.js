@@ -1,4 +1,4 @@
-const BasicRandomSelector = require('./basicRandomSelector');
+const RandomSelector = require('./randomSelector');
 const DEBUG_RANDOM_SELECTOR = true;
 
 /**
@@ -8,7 +8,7 @@ const DEBUG_RANDOM_SELECTOR = true;
  * @param Number MaxRate Selector will random from 0 to MaxRate to select object
  */
 
-class SimpleRandomSelector extends BasicRandomSelector
+class SimpleRandomSelector extends RandomSelector
 {
   constructor(Randomer)
   {
