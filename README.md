@@ -107,7 +107,18 @@ for(let i = 0;i<10;i++)
     console.log("Bonus: ", fortuneWheel.select());
 }
 ```    
-
+```javascript
+/*A modified wheel with 0.5% chance to get 1000$
+, 90 % chance to get 10$
+, 9.5% to get stuck (select return null) O_O!
+*/
+var cheatedWheel = selectorFactory.createFrequencySelectorWithReplacement(
+    [['1000$', 50]
+        , ['10$', 9000]
+    ]
+    , 10000///base is basispoint
+);
+```
 
     
     
