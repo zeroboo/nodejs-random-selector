@@ -16,6 +16,7 @@ class FreequencyRandomSelector extends RandomSelector {
     this.elements = Array();
     this.hasReplacement = true;
     this.DEBUG = false;
+    this.updateTotalFreequencyAfterSelect = false;
   }
   setElements(elements) {
     if (elements === undefined) {
@@ -55,6 +56,10 @@ class FreequencyRandomSelector extends RandomSelector {
     
     this.calculateAccumulateFrequency(true);
     this.debug('setElements: ', this.elements, this.frequencies, this.accumulateFrequencies, this.totalFrequency);
+  }
+  setUpdateTotalFrequencyAfterSelect(update)
+  {
+    this.updateTotalFreequencyAfterSelect = update;
   }
   setTotalFrequency(totalFrequency) {
     if(!Number.isInteger(totalFrequency))
@@ -123,14 +128,26 @@ class FreequencyRandomSelector extends RandomSelector {
     return selectedElement;
   }
   selectWithoutReplacement() {
-    var returnElement = null;
-    var removeIndex = -1;
-    if (this.elements.length > 0) {
-      removeIndex = this.randomer.getRandomIntBetween(0, this.elements.length);
-      returnElement = this.elements.splice(removeIndex, 1)[0];
+    var randomFrequency = this.randomer.getRandomIntBetween(0, this.totalFrequency);
+    var selectedElement = null;
+    var foundIdx = -1;
+    for(let idx=0;idx<this.accumulateFrequencies.length;idx++)
+    {
+        if(randomFrequency < this.accumulateFrequencies[idx])
+        {
+          foundIdx = idx;
+          if(foundIdx >=0 && foundIdx<this.elements.length)
+          {
+            selectedElement = this.elements.splice(idx, 1);
+            this.frequencies.splice(idx, 1);
+            this.calculateAccumulateFrequency(this.updateTotalFreequencyAfterSelect);
+            break;
+          }
+          
+        }
     }
-    this.debug("selectWithoutReplacement", removeIndex, returnElement, this.elements.length);
-    return returnElement;
+    this.debug("selectWithReplacement", randomFrequency, this.totalFrequency, foundIdx, selectedElement, this.accumulateFrequencies);
+    return selectedElement;
   }
   
   debug() {

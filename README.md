@@ -36,7 +36,7 @@ const selectorFactory = require("random-selector");
 ### Testing with TestRandomer
 
 
-## Examples
+### Examples
     
     1. Blindly pick out balls in a bag without returning
 

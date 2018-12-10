@@ -4,7 +4,7 @@ const expect = require('chai').expect;
 var RandomSelector = require('../src/randomSelector');
 var FrequencyRandomSelector = require('../src/frequencyRandomSelector');
 
-describe.only('Test FrequencyRandomSelector', function() {
+describe('Test FrequencyRandomSelector', function() {
     before(function() {
         console.log("BeforeSuite!");
         ///RandomSelector.prototype.DEBUG = true;
@@ -95,7 +95,7 @@ describe.only('Test FrequencyRandomSelector', function() {
                 ['A', 10], ['B', 20], [1, 30], [null, 30]]
                 , 100
             );
-            selector.DEBUG = true;
+            ///selector.DEBUG = true;
             assert.equal(100, selector.getTotalFrequency(), "Correct total freequency");
             assert.isFalse(selector.hasRelacementMode());
             assert.equal(4, selector.getElementCount());
@@ -192,11 +192,10 @@ describe.only('Test FrequencyRandomSelector', function() {
             );
             var hasNull = false;
             var testCount = 1000;
-            selector.DEBUG = true;
+            ///selector.DEBUG = true;
             for(let i=0;i<testCount;i++)
             {
                 var selectedElement = selector.select();
-                console.log('Selected: ', selectedElement);
                 if(selectedElement === null)
                 {
                     hasNull = true;
@@ -204,6 +203,46 @@ describe.only('Test FrequencyRandomSelector', function() {
                 }
             }
             assert.isFalse(hasNull);
+        });
+        
+    });
+
+    describe("#Seleting without replacement", function(){
+        it("Out of values, return null", function(){
+            var selector = selectorFactory.createFrequencySelectorWithoutReplacement([
+                    ['A', 10], ['B', 10]
+                ]
+                , 20
+                , true
+            );
+            assert.isTrue(selector.select()!=null);
+            assert.isTrue(selector.select()!=null);
+            assert.isTrue(selector.select()==null);
+        });
+
+        it("In update frequency after select mode, totalFrequency updated ", function(){
+            var selector = selectorFactory.createFrequencySelectorWithoutReplacement([
+                    ['A', 10], ['B', 10], ['C', 10], ['D', 10]
+                ]
+                , 40
+                , true
+            );
+            assert.equal(40, selector.getTotalFrequency());
+            selector.select();
+            assert.equal(30, selector.getTotalFrequency());
+            
+        });
+        it("In not update frequency after select mode, totalFrequency not changed after select", function(){
+            var selector = selectorFactory.createFrequencySelectorWithoutReplacement([
+                    ['A', 10], ['B', 10], ['C', 10], ['D', 10]
+                ]
+                , 40
+                , false
+            );
+            assert.equal(40, selector.getTotalFrequency());
+            selector.select();
+            assert.equal(40, selector.getTotalFrequency());
+            
         });
         
     });
