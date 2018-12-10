@@ -1,6 +1,6 @@
 {
   "name": "random-selector",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Randomly select elements in a collection.",
   "main": "src/randomSelector.js",
   "scripts": {

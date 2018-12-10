@@ -14,29 +14,25 @@ Run tests
 ```npm
 npm test
 ```
+Run demo
+```npm
+npm start
+```
+
 ---
 # Usage
-Install to your project:
+
+### Install to your project:
 ```npm
 npm install random-selector
 ```
 
-then require the selector factory and create selectors:
+### Require the selector factory
 ```javascript
 const selectorFactory = require("random-selector");
 ```
 
-### Create a selector:
-
-
-### Create a selector with frequency:
-
-### Use custom randomer
-
-### Testing with TestRandomer
-
-
-### Examples
+### Examples of creating selectors
     
     1. Blindly pick out balls in a bag without returning
 
