@@ -16,7 +16,25 @@ class SimpleRandomSelector extends RandomSelector {
   setRelacementMode(hasReplacement) {
     this.hasReplacement = hasReplacement;
   }
-  
+  setElements(elements)
+    {
+        if(elements === undefined)
+        {
+            throw new Error('Error: invalid elements (undefined)!!!');
+        }
+        else if(elements === null)
+        {
+            throw new Error("Error: invalid elements (null)!!!");
+        }
+        else if(!Array.isArray(elements))
+        {
+            throw new Error("Error: invalid elements (not an array)!!!");
+        }
+        else{
+            this.elements = elements;
+        }
+        this.debug('setElements: ', this.elements);
+    }
   hasRelacementMode() {
     return this.hasReplacement;
   }
@@ -42,7 +60,11 @@ class SimpleRandomSelector extends RandomSelector {
     this.debug("selectWithoutReplacement", removeIndex, returnElement, this.elements.length);
     return returnElement;
   }
-
+  debug (){
+    if(this.DEBUG){
+        console.log("[DEBUG]SimpleRandomSelector: ", arguments);
+    }
+}
 
 };
 

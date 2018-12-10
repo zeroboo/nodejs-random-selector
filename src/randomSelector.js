@@ -27,22 +27,7 @@ class RandomSelector
     }
     setElements(elements)
     {
-        if(elements === undefined)
-        {
-            throw new Error('Error: invalid elements (undefined)!!!');
-        }
-        else if(elements === null)
-        {
-            throw new Error("Error: invalid elements (null)!!!");
-        }
-        else if(!Array.isArray(elements))
-        {
-            throw new Error("Error: invalid elements (not an array)!!!");
-        }
-        else{
-            this.elements = elements;
-        }
-        this.debug('setElements: ', this.elements);
+        
     }
     /**
      * get number of elements
