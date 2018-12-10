@@ -27,7 +27,7 @@ npm install random-selector
     2. Blindly pick out balls in a bag with returning
     
     3. Simulating flipping coin
-    ![Image of flipping coin](https://en.wikipedia.org/wiki/Coin_flipping#/media/File:Coin_Toss_(3635981474).jpg)
+    ![Image of flipping coin](https://upload.wikimedia.org/wikipedia/commons/1/15/Coin_Toss_%283635981474%29.jpg)
     
     4. Simulating wheel of fortune
     [Wheel of fortune](https://en.wikipedia.org/wiki/Wheel_of_Fortune_(U.S._game_show)]
