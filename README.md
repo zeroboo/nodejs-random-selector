@@ -1,8 +1,7 @@
 # random-selector
-A nodejs module contains utilities for randomly selecting elements in a collection.
-
+A nodejs module contains utilities for randomly selecting elements
 # Features
-- Selecting element with & without replacement 
+- Selecting elements with & without replacement 
 - Select elements with different frequencies
 ---
 # Build
