@@ -2,15 +2,16 @@ var randomSelector = require('../src/index');
 const assert = require('chai').assert;
 const expect = require('chai').expect;
 var RandomSelector = require('../src/randomSelector');
-
-
+///const NormalDistribution=require('normal-distribution');
+///require('factorial');
 describe('Test random-selector constructing', function() {
   before(function() {
     console.log("BeforeSuite!");
-    RandomSelector.prototype.DEBUG = true;
+    ///RandomSelector.prototype.DEBUG = true;
   });
   beforeEach(function() {
-    console.log("BeforeTest!");
+    ///console.log("BeforeTest!");
+    ///RandomSelector.prototype.DEBUG = true;
   });
   
   //Test constructor
@@ -52,24 +53,25 @@ describe('Test random-selector constructing', function() {
     });
   });
 
-  describe('#selectAndReplace', function() {
+  describe('#selectWithReplacement', function() {
     it("Select number array: return an array element", function(){
       var elements = [1, 2, 3, 5];
       var selector = randomSelector.createSimpleRandomSelector(elements);
-      var selectedElement = selector.selectAndReplace();
+      var selectedElement = selector.selectWithReplacement();
       expect(elements).to.contains(selectedElement);
     });
     it("Select string array: return an array element", function(){
       var elements = ['hello','world','!'];
       var selector = randomSelector.createSimpleRandomSelector(elements);
-      var selectedElement = selector.selectAndReplace();
+      var selectedElement = selector.selectWithReplacement();
       expect(elements).to.contains(selectedElement);
     });
     it("Select mix array: return an array element", function(){
       var elements = ['hello','world','!', 1, 2, 3, 5, null, undefined];
       var selector = randomSelector.createSimpleRandomSelector(elements);
+      selector.DEBUG = false;
       for(var i=0;i<1000;i++){
-        var selectedElement = selector.selectAndReplace();
+        var selectedElement = selector.selectWithReplacement();
         expect(elements).to.contains(selectedElement);
       }
     });
@@ -77,8 +79,9 @@ describe('Test random-selector constructing', function() {
       var elements = ['hello','world','!', 1, 2, 3, 5, null, undefined];
       var selector = randomSelector.createSimpleRandomSelector(elements);
       var hasNull = false;
+      selector.DEBUG = false;
       for(var i=0;i<1000;i++){
-        var selectedElement = selector.selectAndReplace();
+        var selectedElement = selector.selectWithReplacement();
         if(selectedElement == null)
         {
           hasNull = true;
@@ -90,9 +93,10 @@ describe('Test random-selector constructing', function() {
     it("Select mix array: can return undefined", function(){
       var elements = ['hello','world','!', 1, 2, 3, 5, null, undefined];
       var selector = randomSelector.createSimpleRandomSelector(elements);
+      selector.DEBUG = false;
       var hasUndefined = false;
       for(var i=0;i<1000;i++){
-        var selectedElement = selector.selectAndReplace();
+        var selectedElement = selector.selectWithReplacement();
         if(selectedElement == null)
         {
           hasUndefined = true;
@@ -104,20 +108,104 @@ describe('Test random-selector constructing', function() {
     it("Select not return null if there is no null element", function(){
       var elements = ['hello','world','!', 1, 2, 3, 5];
       var selector = randomSelector.createSimpleRandomSelector(elements);
+      selector.DEBUG = false;
       for(var i=0;i<100;i++){
-        var selectedElement = selector.selectAndReplace();
+        var selectedElement = selector.selectWithReplacement();
         assert.isTrue(selectedElement != null);
         assert.isTrue(selectedElement != undefined);
       }
     });
     
-    it("Randomness: ")
+    it("Hypothesis test: coin toss is fair on head!", function(){
+      
+      var selector = randomSelector.createSimpleRandomSelector(['H'/*Head => 0*/
+        , 'T' /*Tail => 1*/]);
+      ///
+      selector.DEBUG = false;
+      var tossCount = 10000;
+      var headCount = 0;
+      for(var i=0;i<tossCount;i++)
+      {
+        var result = selector.selectWithReplacement();
+        if(result==='H')
+        {
+          headCount++;
+        }
+      }
+      var r = headCount/tossCount;///actual probability of obtaining heads in a coin toss)
+      var zValue = 3.8906;
+      var p = headCount/tossCount; //true probability of obtaining heads
+      var E = zValue/(2*Math.sqrt(tossCount)); 
+      console.log('Corresponding to 99.99% level of confidence (p-E < r < p+E): ', p-E,'<', r,'<', p+E);
+      assert.isTrue(r>p-E, "Corresponding to 99.99% level of confidence: p-E < r");
+      assert.isTrue(r<p+E, "Corresponding to 99.99% level of confidence: r < p+E");
+    });
+
+    it("Hypothesis test: dice rolling is fair on 5!", function(){
+      
+      var selector = randomSelector.createSimpleRandomSelector([1, 2, 3, 4, 5, 6]);
+      ///
+      selector.DEBUG = false;
+      var tossCount = 10000;
+      var fiveCount = 0;
+      for(var i=0;i<tossCount;i++)
+      {
+        var result = selector.selectWithReplacement();
+        if(result===5)
+        {
+          fiveCount++;
+        }
+      }
+      var r = fiveCount/tossCount;///actual probability of obtaining five
+      var zValue = 3.8906;
+      var p = 1/6; //true probability of obtaining five
+      var E = zValue/(2*Math.sqrt(tossCount)); 
+      console.log('Corresponding to 99.99% level of confidence (p-E < r < p+E): ', p-E,'<', r,'<', p+E);
+      assert.isTrue(r>p-E, "Corresponding to 99.99% level of confidence: p-E < r");
+      assert.isTrue(r<p+E, "Corresponding to 99.99% level of confidence: r < p+E");
+    });
   });
 
-  describe('#SelectWithReplace', function() {
-    it("After all element selected, return null");
-    it("Select not return null if has at least 1 not null element");
-    it("Select return valid element if has at least 1 element");
+  describe('#SelectWithoutReplacement', function() {
+    it("After all element selected, return null", function(){
+      var selector = randomSelector.createSimpleRandomSelector([1, 2, 3, 5]);
+      selector.DEBUG = true;
+      assert.isTrue(selector.selectWithoutReplacement() != null);
+      assert.isTrue(selector.selectWithoutReplacement() != null);
+      assert.isTrue(selector.selectWithoutReplacement() != null);
+      assert.isTrue(selector.selectWithoutReplacement() != null);
+
+      assert.isTrue(selector.selectWithoutReplacement() == null);
+    });
+    it("Select not return null if has at least 1 not null element", function(){
+      var testCount = 1000;
+      for(var i=0;i<testCount;i++)
+      {
+        var selector = randomSelector.createSimpleRandomSelector([1, 2, 3, 5]);
+        assert.isTrue(selector.selectWithoutReplacement() != null);
+        assert.isTrue(selector.selectWithoutReplacement() != null);
+        assert.isTrue(selector.selectWithoutReplacement() != null);
+        assert.isTrue(selector.selectWithoutReplacement() != null);
+      }
+    });
+    it("Select may return null element", function(){
+      var testCount = 1000;
+      var hasNull = false;
+      
+      for(var i=0;i<testCount;i++)
+      {
+        var selector = randomSelector.createSimpleRandomSelector([null, 2, null, 5]);
+        ///selector.DEBUG = true;
+        var selectedElement = selector.selectWithoutReplacement();
+        console.log("Selected: ", selectedElement);
+        if(selectedElement == null)
+        {
+          hasNull = true;
+          break;
+        }
+      }
+      assert.isTrue(hasNull);
+    });
     it("Randomness: ")
   });
 });

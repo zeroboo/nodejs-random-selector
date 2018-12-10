@@ -1,17 +1,18 @@
-global.__base = __dirname + '/';
-console.log("Current folder: ", global.__base);
 const RandomSelector = require("./index");
 
+console.log("--- Simulating rolling dice: ");
+var diceSelector = RandomSelector.createSimpleRandomSelector([1, 2, 3, 4, 5, 6]);
+var points = Array();
+for(let i = 0;i<3;i++)
+{
+    points.push(diceSelector.selectWithReplacement());
+}
+console.log("Total points after 3 rolls: ", points);
 
-var balls = Array()[{color: 'red'}
-    , {color: 'red'}
-    , {color: 'red'}
-];
+console.log("--- Simulating flipping coin: ");
+var flipSelector = RandomSelector.createSimpleRandomSelector(['Head', 'Tail']);
+for(let i = 0;i<10;i++)
+{
+    console.log('Flip: ', flipSelector.selectWithReplacement());
+}
 
-var selector = RandomSelector.createRandomSelector([
-        [{color: 'red'}, 1000]
-        , [{color: 'red'}, 1000]
-    ]
-    , 1000
-);
-console.log(balls)

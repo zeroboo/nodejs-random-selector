@@ -1,11 +1,12 @@
 {
   "name": "random-selector",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Randomly select elements in a collection.",
   "main": "src/randomSelector.js",
   "scripts": {
     "test": "mocha --reporter spec",
-    "start": "node src/demo.js"
+    "start": "node src/demo.js",
+	"start": "node src/demo.js"
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,10 @@
     "random-utility",
     "collection random",
     "random collection",
-    "random element"
+    "random element",
+	"select with replacement",
+	"select without replacement"
+	
   ],
   "author": "zeroboo",
   "license": "ISC",
