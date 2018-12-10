@@ -11,14 +11,16 @@ describe.only('Test FrequencyRandomSelector', function() {
       });
       beforeEach(function() {
         ///console.log("BeforeTest!");
-        ///RandomSelector.prototype.DEBUG = true;
+        FrequencyRandomSelector.prototype.DEBUG = false;
       });
     describe("#Construct selector with replacement", function(){
         it("Valid parameters, correct config", function(){
+            FrequencyRandomSelector.prototype.DEBUG = true;
             var selector = selectorFactory.createFrequencySelectorWithReplacement([
                 ['A', 10], ['B', 20], [1, 30], [null, 30]]
                 , 100
             );
+            
             assert.equal(100, selector.getTotalFrequency(), "Correct total freequency");
             assert.isTrue(selector.hasRelacementMode());
             assert.equal(4, selector.getElementCount());
@@ -93,6 +95,7 @@ describe.only('Test FrequencyRandomSelector', function() {
                 ['A', 10], ['B', 20], [1, 30], [null, 30]]
                 , 100
             );
+            selector.DEBUG = true;
             assert.equal(100, selector.getTotalFrequency(), "Correct total freequency");
             assert.isFalse(selector.hasRelacementMode());
             assert.equal(4, selector.getElementCount());
@@ -158,6 +161,49 @@ describe.only('Test FrequencyRandomSelector', function() {
                     , 100
                 );
             }, Error, "");
+        });
+    });
+
+    describe("#Seleting with replacement", function(){
+        it("Allow null selecting: has null value", function(){
+            var selector = selectorFactory.createFrequencySelectorWithReplacement([
+                    ['A', 10], ['B', 10]
+                ]
+                , 100
+            );
+            var hasNull = false;
+            var testCount = 1000;
+            for(let i=0;i<testCount;i++)
+            {
+                var selectedElement = selector.select();
+                if(selectedElement == null)
+                {
+                    hasNull = true;
+                    break;
+                }
+            }
+            assert.isTrue(hasNull);
+        });
+
+        it("Not allow null selecting: has no null value", function(){
+            var selector = selectorFactory.createFrequencySelectorWithReplacement([
+                    ['A', 10], ['B', 10]
+                ]
+            );
+            var hasNull = false;
+            var testCount = 1000;
+            selector.DEBUG = true;
+            for(let i=0;i<testCount;i++)
+            {
+                var selectedElement = selector.select();
+                console.log('Selected: ', selectedElement);
+                if(selectedElement === null)
+                {
+                    hasNull = true;
+                    break;
+                }
+            }
+            assert.isFalse(hasNull);
         });
         
     });

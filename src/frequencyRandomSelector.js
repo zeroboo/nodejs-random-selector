@@ -14,6 +14,7 @@ class FreequencyRandomSelector extends RandomSelector {
     this.frequencies = Array();
     this.totalFrequency = 0;
     this.elements = Array();
+    this.hasReplacement = true;
   }
   setElements(elements) {
     if (elements === undefined) {
@@ -27,7 +28,8 @@ class FreequencyRandomSelector extends RandomSelector {
     }
 
     ///Every element must has valid frequency: an possitive number
-    var tempTotalFrequency = 0;
+    this.frequencies = Array();
+    this.elements = Array();
     for (let i = 0; i < elements.length; i++) {
       let element = elements[i];
       if (!Array.isArray(element)) {
@@ -44,17 +46,14 @@ class FreequencyRandomSelector extends RandomSelector {
       {
         throw new Error(util.format("Error: invalid element at index %i: %s (frequency is negative)", i, element));
       }
-
+      
       this.elements.push(element[0]);
       this.frequencies.push(element[1]);
-      tempTotalFrequency += element[1];
-      this.accumulateFrequencies.push(tempTotalFrequency);
       
     }
-
-    this.elements = elements;
-    this.totalFrequency = tempTotalFrequency;
-    this.debug('setElements: ', this.elements, this.totalFrequency);
+    
+    this.calculateAccumulateFrequency(true);
+    this.debug('setElements: ', this.elements, this.frequencies, this.accumulateFrequencies, this.totalFrequency);
   }
   setTotalFrequency(totalFrequency) {
     if(!Number.isInteger(totalFrequency))
@@ -78,6 +77,62 @@ class FreequencyRandomSelector extends RandomSelector {
   {
     return this.accumulateFrequencies;
   }
+  select() {
+    var selectedElement = null;
+    if (this.hasReplacement) {
+      selectedElement = this.selectWithReplacement();
+    } else {
+      selectedElement = this.selectWithoutReplacement();
+    }
+
+    this.debug("select", this.hasReplacement, selectedElement);
+    return selectedElement;
+  }
+  calculateAccumulateFrequency(calculateTotalFreequency)
+  {
+    var tempTotalFrequency = 0;
+    this.accumulateFrequencies = Array();
+
+    for(let i=0;i<this.frequencies.length;i++)
+    {
+      tempTotalFrequency += this.frequencies[i];
+      this.accumulateFrequencies.push(tempTotalFrequency);
+    }
+    
+    if(calculateTotalFreequency)
+    {
+      this.totalFrequency = tempTotalFrequency;
+    }
+
+  }
+  selectWithReplacement() {
+    console.log('selectWithReplacement');
+    var randomFrequency = this.randomer.getRandomIntBetween(0, this.totalFrequency);
+    var selectedElement = null;
+    var foundIdx = -1;
+    for(let idx=0;idx<this.accumulateFrequencies.length;idx++)
+    {
+        if(randomFrequency<this.accumulateFrequencies[idx])
+        {
+          foundIdx = idx;
+          selectedElement = this.elements[idx];
+          break;
+        }
+    }
+    this.debug("selectWithReplacement", randomFrequency, this.totalFrequency, foundIdx, selectedElement, this.accumulateFrequencies);
+    return selectedElement;
+  }
+  selectWithoutReplacement() {
+    var returnElement = null;
+    var removeIndex = -1;
+    if (this.elements.length > 0) {
+      removeIndex = this.randomer.getRandomIntBetween(0, this.elements.length);
+      returnElement = this.elements.splice(removeIndex, 1)[0];
+    }
+    this.debug("selectWithoutReplacement", removeIndex, returnElement, this.elements.length);
+    return returnElement;
+  }
+  
   debug() {
     if (this.DEBUG) {
       console.log("[DEBUG]FreequencyRandomSelector: ", arguments);

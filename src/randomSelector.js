@@ -14,11 +14,14 @@ class RandomSelector
 
         this.debug('RandomSelector.Constructor', this.randomer.getName(), this.hasReplacement);
     }
+    
     setRelacementMode(hasReplacement) {
+        
       this.hasReplacement = hasReplacement;
+      this.debug("setReplacementMode", this.hasReplacement);
     }
     hasRelacementMode() {
-        return this.hasReplacement
+        return this.hasReplacement;
     }
     debug (){
         if(this.DEBUG){
