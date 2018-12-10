@@ -23,7 +23,7 @@ npm install random-selector
 
 then require the selector factory and create selectors:
 ```javascript
-const RandomSelectorFactory = require("random-selector");
+const selectorFactory = require("random-selector");
 ```
 
 ### Create a selector:
@@ -36,7 +36,7 @@ const RandomSelectorFactory = require("random-selector");
 ### Testing with TestRandomer
 
 
-# Examples
+## Examples
     
     1. Blindly pick out balls in a bag without returning
 
@@ -44,23 +44,55 @@ const RandomSelectorFactory = require("random-selector");
     
     3. Simulating rolling dice
 ```javascript
-const RandomSelector = require("random-selector");
 console.log("--- Simulating rolling dice: ");
-var diceSelector = RandomSelector.createSimpleRandomSelector([1, 2, 3, 4, 5, 6]);
+var diceSelector = selectorFactory.createSimpleSelectorWithReplacement([1, 2, 3, 4, 5, 6]);
 var points = Array();
-for(let i = 0;i<3;i++)
+for(let i = 0;i<10;i++)
 {
-    points.push(diceSelector.selectWithReplacement());
+    points.push(diceSelector.select());
 }
-console.log("Total points after 3 rolls: ", points);
+console.log("Total points after 10 rolls: ", points);
+
 ```
     3. Simulating flipping coin
 ![Image of flipping coin](./doc/img/fipping_coin.jpg)
-
+```javascript
+var flipSelector = selectorFactory.createSimpleSelectorWithReplacement(['Head', 'Tail']);
+var faces = Array();
+for(let i = 0;i<10;i++)
+{
+    faces.push(flipSelector.select());
+}
+console.log("Coin toss result: ", faces);
+```
     
     4. Simulating wheel of fortune:
 ![Image Wheel of Fortune](./doc/img/wheel_fortune.jpg)
-    
+```javascript
+var fortuneWheel = selectorFactory.createFrequencySelectorWithReplacement(
+    [['1000$', 10]
+        , ['750$', 10]
+        , ['150$', 10]
+        , ['400$', 10]
+        , ['250$', 10]
+        , ['800$', 10]
+        , ['100$', 10]
+        , ['450$', 10]
+        , ['300$', 10]
+        , ['600$', 10]
+        , ['200$', 10]
+        , ['350$', 10]
+        , ['1000$', 10]
+    ] ///Total frequency is 1200
+);
+
+for(let i = 0;i<10;i++)
+{
+    console.log("Bonus: ", fortuneWheel.select());
+}
+```    
+
+
     
     
     

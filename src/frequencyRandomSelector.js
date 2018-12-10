@@ -15,6 +15,7 @@ class FreequencyRandomSelector extends RandomSelector {
     this.totalFrequency = 0;
     this.elements = Array();
     this.hasReplacement = true;
+    this.DEBUG = false;
   }
   setElements(elements) {
     if (elements === undefined) {
@@ -106,7 +107,6 @@ class FreequencyRandomSelector extends RandomSelector {
 
   }
   selectWithReplacement() {
-    console.log('selectWithReplacement');
     var randomFrequency = this.randomer.getRandomIntBetween(0, this.totalFrequency);
     var selectedElement = null;
     var foundIdx = -1;
