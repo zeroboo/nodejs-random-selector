@@ -12,15 +12,15 @@ console.log("Selected ball: ", bagsNormal.select());
 console.log("Bag now empty, no ball selected: ", bagsNormal.select());
 
 console.log("----- Simulating selecting balls from a bag with returning: ");
-var bagsNormal = selectorFactory.createSimpleSelectorWithoutReplacement([
+var bagsMagic = selectorFactory.createSimpleSelectorWithoutReplacement([
     {color:'red'}, 
     {color:'black'}, 
     {color:'red'}, 
 ]);
-console.log("Selected ball: ", bagsNormal.select());
-console.log("Selected ball: ", bagsNormal.select());
-console.log("Selected ball: ", bagsNormal.select());
-console.log("Still have ball selected: ", bagsNormal.select());
+console.log("Selected ball: ", bagsMagic.select());
+console.log("Selected ball: ", bagsMagic.select());
+console.log("Selected ball: ", bagsMagic.select());
+console.log("Still have ball selected: ", bagsMagic.select());
 
 
 

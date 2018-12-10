@@ -35,9 +35,30 @@ const selectorFactory = require("random-selector");
 ### Examples of creating selectors
     
     1. Blindly pick out balls in a bag without returning
-
+```javascript
+var bagsNormal = selectorFactory.createSimpleSelectorWithoutReplacement([
+    {color:'red'}, 
+    {color:'black'}, 
+    {color:'red'}, 
+]);
+console.log("Selected ball: ", bagsNormal.select());
+console.log("Selected ball: ", bagsNormal.select());
+console.log("Selected ball: ", bagsNormal.select());
+console.log("Bag now empty, no ball selected: ", bagsNormal.select());
+```
     2. Blindly pick out balls in a bag with returning
-    
+```javascript
+console.log("----- Simulating selecting balls from a bag with returning: ");
+var bagsMagic = selectorFactory.createSimpleSelectorWithoutReplacement([
+    {color:'red'}, 
+    {color:'black'}, 
+    {color:'red'}, 
+]);
+console.log("Selected ball: ", bagsMagic.select());
+console.log("Selected ball: ", bagsMagic.select());
+console.log("Selected ball: ", bagsMagic.select());
+console.log("Still have ball selected: ", bagsMagic.select());
+```
     3. Simulating rolling dice
 ```javascript
 console.log("--- Simulating rolling dice: ");
