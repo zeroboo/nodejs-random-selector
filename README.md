@@ -2,8 +2,8 @@
 A nodejs module contains utilities for randomly selecting elements in a collection.
 
 # Features
-- Selecting 
-- Selecting with frequency
+- Selecting element with & without replacement 
+- Select elements with different frequencies
 ---
 # Build
 On project folder run
@@ -20,7 +20,14 @@ Install to your project:
 ```npm
 npm install random-selector
 ```
+
+then require the selector factory and create selectors:
+```javascript
+const RandomSelectorFactory = require("random-selector");
+```
+
 ### Create a selector:
+
 
 ### Create a selector with frequency:
 

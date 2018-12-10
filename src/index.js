@@ -7,14 +7,15 @@ var DEBUG_RANDOM_SELECTOR_FACTORY = true;
 RandomSelector.prototype.DEBUG = false;
 
 function RandomSelectorFactory() {
-
    
 }
+/**
+ * @param Array elements Elements to be randomly selected
+*/
 RandomSelectorFactory.prototype.createSimpleRandomSelector = function(elements){
     var selector = new SimpleRandomSelector();
     selector.setElements(elements);
     return selector;
-
 } 
 RandomSelectorFactory.prototype.debug = function(){
     if(DEBUG_RANDOM_SELECTOR_FACTORY){

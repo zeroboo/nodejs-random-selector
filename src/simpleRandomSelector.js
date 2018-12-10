@@ -7,7 +7,6 @@ const DEBUG_RANDOM_SELECTOR = true;
  * @param Arrays Targets 
  * @param Number MaxRate Selector will random from 0 to MaxRate to select object
  */
-
 class SimpleRandomSelector extends RandomSelector
 {
   constructor(Randomer)
