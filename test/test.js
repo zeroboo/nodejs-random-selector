@@ -10,41 +10,11 @@ describe('Test random-selector constructing', function() {
   });
   
   //Test constructor
-  describe('#Construct selector with empty: error', function() {
+  describe('#Test', function() {
     //assert.equal(false, true);
-  });
-
-  //Test constructor
-  describe('#Construct selector with invalid parameter: error', function() {
-    //assert.equal(false, true);
-  });
-
-  //Test constructor
-  describe('#Construct selector with valid parameter: no error', function() {
-    //assert.equal(false, true);
-  });
-
-  //
-  describe('#Construct selector with valid parameter: no error', function() {
-    //assert.equal(false, true);
-  });
-  
-  //Test
-  describe('-indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      assert.equal([1,2,3].indexOf(4), -1);
-    });
   });
 });
 
-describe('Test random-selector selecting', function(done) {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      assert.equal([1,2,3].indexOf(4), -1);
-      
-    });
-  });
-});
 
 
 var assertChai = require('chai').assert

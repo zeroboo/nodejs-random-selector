@@ -7,39 +7,41 @@ const DEBUG_RANDOM_SELECTOR = true;
  * @param Arrays Targets 
  * @param Number MaxRate Selector will random from 0 to MaxRate to select object
  */
-class SimpleRandomSelector extends RandomSelector
-{
-  constructor(Randomer)
-  {
+class SimpleRandomSelector extends RandomSelector {
+  constructor(Randomer) {
     super(Randomer)
+    this.hasReplacement = true;
   }
-  setFunc (Targets, MaxRate){
-    this.debug("Constructor", Targets, MaxRate);
+  setRelacementMode(hasReplacement) {
+    this.hasReplacement = hasReplacement;
+  }
+  isRelacementMode() {
+    return this.hasReplacement;
+  }
+  select() {
+    if (this.hasReplacement) {
+      return this.selectWithReplacement();
+    } else {
+      return this.selectWithoutReplacement();
+    }
+  }
+  selectWithReplacement() {
+    var index = this.randomer.getRandomIntBetween(0, this.elements.length);
+    this.debug("selectWithReplacement", index, this.elements.length);
+    return this.elements[index];
+  }
+  selectWithoutReplacement() {
+    var returnElement = null;
+    var removeIndex = -1;
+    if (this.elements.length > 0) {
+      removeIndex = this.randomer.getRandomIntBetween(0, this.elements.length);
+      returnElement = this.elements.splice(removeIndex, 1)[0];
+    }
+    this.debug("selectWithoutReplacement", removeIndex, returnElement, this.elements.length);
+    return returnElement;
+  }
 
-    this.targets = new Array();
-    this.targetsAccumulateRate = new Array();
-    
-    verifyParameters(Targets, MaxRate)
-    applyTargets(Targets);
-  }
-  verifyParameters()
-  {
-    if(Targets === null)
-    {
-      throw Error('Invalid parameters');
-    }
-  }
-  applyTargets(Targets)
-  {
-    this.targets = new Array();
-    var idx = arr.length;
-    while (idx--) {
-        this.targets.push(targets[idx][0]);
-        this.targetsAccumulateRate.push(targets[idx][1]);
-    }
-    this.debug("applyTarget.targets", this.targets);
-    this.debug("applyTarget.rates", this.targetsAccumulateRate);
-  }
+
 };
 
 module.exports = SimpleRandomSelector;

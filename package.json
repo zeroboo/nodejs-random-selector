@@ -5,8 +5,7 @@
   "main": "src/randomSelector.js",
   "scripts": {
     "test": "mocha --reporter spec",
-    "start": "node src/demo.js",
-	"start": "node src/demo.js"
+    "start": "node src/demo.js"
   },
   "repository": {
     "type": "git",
@@ -23,13 +22,17 @@
     "select",
     "random sample",
     "sampling",
+    "sample",
     "random-utility",
     "collection random",
     "random collection",
     "random element",
-	"select with replacement",
-	"select without replacement"
-	
+    "select with replacement",
+    "select without replacement",
+    "sampling with replacement",
+    "sampling without replacement",
+    "statistic",
+    "gaming"
   ],
   "author": "zeroboo",
   "license": "ISC",
@@ -37,11 +40,10 @@
     "url": "https://github.com/zeroboo/nodejs-random-selector/issues"
   },
   "homepage": "https://github.com/zeroboo/nodejs-random-selector#readme",
-  "dependencies": {
-    
-  },
+  "dependencies": {},
   "devDependencies": {
     "chai": "^4.2.0",
+    "eslint": "^5.10.0",
     "mocha": "^5.2.0",
     "stats-array": "^0.1.2"
   }

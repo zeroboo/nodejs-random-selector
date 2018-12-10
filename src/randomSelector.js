@@ -10,8 +10,12 @@ class RandomSelector
         {
             this.randomer = randomer;
         }
+        this.hasReplacement = true;
 
-        this.debug('randomer', this.randomer.getName());
+        this.debug('RandomSelector.Constructor', this.randomer.getName(), this.hasReplacement);
+    }
+    setRelacementMode(hasReplacement) {
+      this.hasReplacement = hasReplacement;
     }
     debug (){
         if(this.DEBUG){
@@ -49,24 +53,11 @@ class RandomSelector
     {
         return this.elements;
     }
-    selectWithReplacement()
+    select()
     {
-        var index = this.randomer.getRandomIntBetween(0, this.elements.length);
-        this.debug("selectWithReplacement", index, this.elements.length);
-        return this.elements[index];
+
     }
-    selectWithoutReplacement()
-    {
-        var returnElement = null;
-        var removeIndex = -1;
-        if(this.elements.length>0)
-        {
-          removeIndex = this.randomer.getRandomIntBetween(0, this.elements.length);
-          returnElement = this.elements.splice(removeIndex, 1)[0];
-        }
-        this.debug("selectWithoutReplacement", removeIndex, returnElement, this.elements.length);
-        return returnElement;
-    }
+    
 
 
 }

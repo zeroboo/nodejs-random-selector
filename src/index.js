@@ -12,9 +12,16 @@ function RandomSelectorFactory() {
 /**
  * @param Array elements Elements to be randomly selected
 */
-RandomSelectorFactory.prototype.createSimpleRandomSelector = function(elements){
+RandomSelectorFactory.prototype.createSimpleRandomSelectorWithoutReplacement = function(elements){
     var selector = new SimpleRandomSelector();
     selector.setElements(elements);
+    selector.setRelacementMode(false);
+    return selector;
+} 
+RandomSelectorFactory.prototype.createSimpleRandomSelectorWithReplacement = function(elements){
+    var selector = new SimpleRandomSelector();
+    selector.setElements(elements);
+    selector.setRelacementMode(true);
     return selector;
 } 
 RandomSelectorFactory.prototype.debug = function(){
