@@ -12,13 +12,13 @@ function RandomSelectorFactory() {
 /**
  * @param Array elements Elements to be randomly selected
 */
-RandomSelectorFactory.prototype.createSimpleRandomSelectorWithoutReplacement = function(elements){
+RandomSelectorFactory.prototype.createSimpleSelectorWithoutReplacement = function(elements){
     var selector = new SimpleRandomSelector();
     selector.setElements(elements);
     selector.setRelacementMode(false);
     return selector;
 } 
-RandomSelectorFactory.prototype.createSimpleRandomSelectorWithReplacement = function(elements){
+RandomSelectorFactory.prototype.createSimpleSelectorWithReplacement = function(elements){
     var selector = new SimpleRandomSelector();
     selector.setElements(elements);
     selector.setRelacementMode(true);

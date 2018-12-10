@@ -12,10 +12,12 @@ class SimpleRandomSelector extends RandomSelector {
     super(Randomer)
     this.hasReplacement = true;
   }
+  
   setRelacementMode(hasReplacement) {
     this.hasReplacement = hasReplacement;
   }
-  isRelacementMode() {
+  
+  hasRelacementMode() {
     return this.hasReplacement;
   }
   select() {

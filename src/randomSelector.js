@@ -17,6 +17,9 @@ class RandomSelector
     setRelacementMode(hasReplacement) {
       this.hasReplacement = hasReplacement;
     }
+    hasRelacementMode() {
+        return this.hasReplacement
+    }
     debug (){
         if(this.DEBUG){
             console.log("[DEBUG]RandomSelector: ", arguments);
@@ -57,7 +60,14 @@ class RandomSelector
     {
 
     }
-    
+    selectWithoutReplacement()
+    {
+
+    }
+    selectWithReplacement()
+    {
+        
+    }
 
 
 }

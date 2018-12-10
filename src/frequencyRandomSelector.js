@@ -13,6 +13,10 @@ class FreequencyRandomSelector extends RandomSelector
   {
     super(Randomer)
   }
+  setElements(elements)
+  {
+    
+  }
   debug (){
     if(this.DEBUG){
         console.log("[DEBUG]FreequencyRandomSelector: ", arguments);
