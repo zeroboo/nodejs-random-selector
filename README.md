@@ -35,54 +35,44 @@ const selectorFactory = require("random-selector");
     
     1. Blindly pick out balls in a bag without returning
 ```javascript
-var bagsNormal = selectorFactory.createSimpleSelectorWithoutReplacement([
+var normalBag = selectorFactory.createSimpleSelectorWithoutReplacement([
     {color:'red'}, 
     {color:'black'}, 
-    {color:'red'}, 
 ]);
-console.log("Selected ball: ", bagsNormal.select());
-console.log("Selected ball: ", bagsNormal.select());
-console.log("Selected ball: ", bagsNormal.select());
-console.log("Bag now empty, no ball selected: ", bagsNormal.select());
+console.log("Selected ball: ", normalBag.select());
+console.log("Selected ball: ", normalBag.select());
+console.log("Bag now empty, no ball left to be selected: ", normalBag.select());
 ```
+
     2. Blindly pick out balls in a bag with returning
 ```javascript
-console.log("----- Simulating selecting balls from a bag with returning: ");
-var bagsMagic = selectorFactory.createSimpleSelectorWithoutReplacement([
-    {color:'red'}, 
-    {color:'black'}, 
-    {color:'red'}, 
+var magicBag = selectorFactory.createSimpleSelectorWithReplacement([
+    {color:'red', id:'left'}, 
+    {color:'black', id:'right'}, 
 ]);
-console.log("Selected ball: ", bagsMagic.select());
-console.log("Selected ball: ", bagsMagic.select());
-console.log("Selected ball: ", bagsMagic.select());
-console.log("Still have ball selected: ", bagsMagic.select());
+console.log("Selected ball: ", magicBag.select());
+console.log("Selected ball: ", magicBag.select());
+console.log("Still have balls: ", magicBag.select());
 ```
+
     3. Simulating rolling dice
 ```javascript
-console.log("--- Simulating rolling dice: ");
-var diceSelector = selectorFactory.createSimpleSelectorWithReplacement([1, 2, 3, 4, 5, 6]);
-var points = Array();
-for(let i = 0;i<10;i++)
-{
-    points.push(diceSelector.select());
-}
-console.log("Total points after 10 rolls: ", points);
+var chigurhCoin = selectorFactory.createSimpleSelectorWithReplacement(['Head', 'Tail']);
+console.log("Your call: ", chigurhCoin.select());
 
 ```
-    3. Simulating flipping coin
+
+    4. Flipping coin
 ![Image of flipping coin](./doc/img/fipping_coin.jpg)
 ```javascript
 var flipSelector = selectorFactory.createSimpleSelectorWithReplacement(['Head', 'Tail']);
-var faces = Array();
-for(let i = 0;i<10;i++)
-{
-    faces.push(flipSelector.select());
-}
-console.log("Coin toss result: ", faces);
+console.log("Toss: ", flipSelector.select());
 ```
-    
-    4. Simulating wheel of fortune:
+
+    5. [https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not]
+```javascript
+```    
+    5. Simulating wheel of fortune:
 ![Image Wheel of Fortune](./doc/img/wheel_fortune.jpg)
 ```javascript
 var fortuneWheel = selectorFactory.createFrequencySelectorWithReplacement(
@@ -98,26 +88,19 @@ var fortuneWheel = selectorFactory.createFrequencySelectorWithReplacement(
         , ['600$', 10]
         , ['200$', 10]
         , ['350$', 10]
-        , ['1000$', 10]
     ] ///Total frequency is 1200
 );
-
-for(let i = 0;i<10;i++)
-{
-    console.log("Bonus: ", fortuneWheel.select());
-}
+console.log("Prize: ", fortuneWheel.select());
 ```    
 ```javascript
-/*A modified wheel with 0.5% chance to get 1000$
-, 90 % chance to get 10$
-, 9.5% to get stuck (select return null) O_O!
-*/
-var cheatedWheel = selectorFactory.createFrequencySelectorWithReplacement(
+///A cheated wheel with 0.5% chance to get 1000$, 50 % chance to get 10$, 49.5% to get stuck (select return null)
+var realWheel = selectorFactory.createFrequencySelectorWithReplacement(
     [['1000$', 50]
-        , ['10$', 9000]
+        , ['10$', 5000]
     ]
-    , 10000///base is basispoint
+    , 10000///basispoint based 
 );
+console.log("Prize: ", realWheel.select());
 ```
 
     

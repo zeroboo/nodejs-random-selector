@@ -1,48 +1,51 @@
 const selectorFactory = require("./index");
 
 console.log("----- Simulating selecting balls from a bag without returning: ");
-var bagsNormal = selectorFactory.createSimpleSelectorWithoutReplacement([
+var normalBag = selectorFactory.createSimpleSelectorWithoutReplacement([
     {color:'red'}, 
     {color:'black'}, 
-    {color:'red'}, 
 ]);
-console.log("Selected ball: ", bagsNormal.select());
-console.log("Selected ball: ", bagsNormal.select());
-console.log("Selected ball: ", bagsNormal.select());
-console.log("Bag now empty, no ball selected: ", bagsNormal.select());
+console.log("Selected ball: ", normalBag.select());
+console.log("Selected ball: ", normalBag.select());
+console.log("Bag now empty, no ball left to be selected: ", normalBag.select());
 
 console.log("----- Simulating selecting balls from a bag with returning: ");
-var bagsMagic = selectorFactory.createSimpleSelectorWithoutReplacement([
-    {color:'red'}, 
-    {color:'black'}, 
-    {color:'red'}, 
+var magicBag = selectorFactory.createSimpleSelectorWithReplacement([
+    {color:'red', id:'left'}, 
+    {color:'black', id:'right'}, 
 ]);
-console.log("Selected ball: ", bagsMagic.select());
-console.log("Selected ball: ", bagsMagic.select());
-console.log("Selected ball: ", bagsMagic.select());
-console.log("Still have ball selected: ", bagsMagic.select());
-
-
-
+console.log("Selected ball: ", magicBag.select());
+console.log("Selected ball: ", magicBag.select());
+console.log("Still have balls: ", magicBag.select());
 
 console.log("----- Simulating rolling dice: ");
-var diceSelector = selectorFactory.createSimpleSelectorWithReplacement([1, 2, 3, 4, 5, 6]);
+var dice = selectorFactory.createSimpleSelectorWithReplacement([1, 2, 3, 4, 5, 6]);
 var points = Array();
 for(let i = 0;i<10;i++)
 {
-    points.push(diceSelector.select());
+    points.push(dice.select());
 }
 console.log("Total points after 10 rolls: ", points);
 
+console.log("----- Simulating a love checker build in daisy: ");
+var daisy = selectorFactory.createSimpleSelectorWithoutReplacement([]);
+for(let i=0;i < daisy.getRandomer().getRandomIntBetween(4, 8);i++)
+{
+    daisy.getElements().push('petal');
+}
+var meter = true;
+while(daisy.select()!=null)
+{
+    meter = !meter;
+    console.log(meter?'He loves me':'He loves me not');
+}
+if(!meter){
+    console.log('try another daisy');
+}
 
 console.log("----- Simulating flipping coin: ");
-var flipSelector = selectorFactory.createSimpleSelectorWithReplacement(['Head', 'Tail']);
-var faces = Array();
-for(let i = 0;i<10;i++)
-{
-    faces.push(flipSelector.select());
-}
-console.log("Coin toss result: ", faces);
+var chigurhCoin = selectorFactory.createSimpleSelectorWithReplacement(['Head', 'Tail']);
+console.log("Your call: ", chigurhCoin.select());
 
 console.log("----- Simulating lucky wheel: each bonus has the same frequency");
 var fortuneWheel = selectorFactory.createFrequencySelectorWithReplacement(
@@ -58,22 +61,20 @@ var fortuneWheel = selectorFactory.createFrequencySelectorWithReplacement(
         , ['600$', 10]
         , ['200$', 10]
         , ['350$', 10]
-        , ['1000$', 10]
     ] ///Total frequency is 1200
 );
+console.log("Prize: ", fortuneWheel.select());
 
-for(let i = 0;i<10;i++)
-{
-    console.log("Bonus: ", fortuneWheel.select());
-}
-
-///A modified wheel with 0.5% chance to get 1000$, 90 % chance to get 10$, 9.5% to get stuck (select return null) O_O!
-var cheatedWheel = selectorFactory.createFrequencySelectorWithReplacement(
+///A cheated wheel with 0.5% chance to get 1000$, 50 % chance to get 10$, 49.5% to get stuck (select return null)
+console.log("A cheated wheel: pretty sure that player won't get big prize!");
+var realWheel = selectorFactory.createFrequencySelectorWithReplacement(
     [['1000$', 50]
-        , ['10$', 9000]
+        , ['10$', 5000]
     ]
-    , 10000///base is basispoint
+    , 10000///basispoint based 
 );
+console.log("Prize: ", realWheel.select());
+
 
 
 

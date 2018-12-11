@@ -56,7 +56,9 @@ class RandomSelector
     {
         
     }
-
-
+    getRandomer()
+    {
+        return this.randomer;
+    }
 }
 module.exports = RandomSelector;
