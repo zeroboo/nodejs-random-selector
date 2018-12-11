@@ -57,16 +57,20 @@ console.log("Still have balls: ", magicBag.select());
 
     3. Simulating rolling dice
 ```javascript
-var chigurhCoin = selectorFactory.createSimpleSelectorWithReplacement(['Head', 'Tail']);
-console.log("Your call: ", chigurhCoin.select());
-
+var dice = selectorFactory.createSimpleSelectorWithReplacement([1, 2, 3, 4, 5, 6]);
+var points = Array();
+for(let i = 0;i<10;i++)
+{
+    points.push(dice.select());
+}
+console.log("Total points after 10 rolls: ", points);
 ```
 
     4. Flipping coin
 ![Image of flipping coin](./doc/img/fipping_coin.jpg)
 ```javascript
-var flipSelector = selectorFactory.createSimpleSelectorWithReplacement(['Head', 'Tail']);
-console.log("Toss: ", flipSelector.select());
+var chigurhCoin = selectorFactory.createSimpleSelectorWithReplacement(['Head', 'Tail']);
+console.log("Your call: ", chigurhCoin.select());
 ```
 
 [    5. daisy meter](https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not)
