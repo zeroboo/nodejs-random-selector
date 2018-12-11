@@ -69,7 +69,7 @@ var flipSelector = selectorFactory.createSimpleSelectorWithReplacement(['Head', 
 console.log("Toss: ", flipSelector.select());
 ```
 
-    5. [https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not](https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not)
+[    5. daisy meter](https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not)
 ```javascript
 var daisy = selectorFactory.createSimpleSelectorWithoutReplacement([]);
 for(let i=0;i < daisy.getRandomer().getRandomIntBetween(4, 8);i++)
@@ -83,7 +83,7 @@ while(daisy.select()!=null)
     console.log(meter?'He loves me':'He loves me not');
 }
 ```    
-    5. Simulating wheel of fortune:
+    6. Simulating wheel of fortune:
 ![Image Wheel of Fortune](./doc/img/wheel_fortune.jpg)
 ```javascript
 var fortuneWheel = selectorFactory.createFrequencySelectorWithReplacement(
