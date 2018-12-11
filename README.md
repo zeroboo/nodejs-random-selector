@@ -69,8 +69,19 @@ var flipSelector = selectorFactory.createSimpleSelectorWithReplacement(['Head', 
 console.log("Toss: ", flipSelector.select());
 ```
 
-    5. [https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not]
+    5. [https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not](https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not)
 ```javascript
+var daisy = selectorFactory.createSimpleSelectorWithoutReplacement([]);
+for(let i=0;i < daisy.getRandomer().getRandomIntBetween(4, 8);i++)
+{
+    daisy.getElements().push('petal');
+}
+var meter = true;
+while(daisy.select()!=null)
+{
+    meter = !meter;
+    console.log(meter?'He loves me':'He loves me not');
+}
 ```    
     5. Simulating wheel of fortune:
 ![Image Wheel of Fortune](./doc/img/wheel_fortune.jpg)
@@ -93,7 +104,7 @@ var fortuneWheel = selectorFactory.createFrequencySelectorWithReplacement(
 console.log("Prize: ", fortuneWheel.select());
 ```    
 ```javascript
-///A cheated wheel with 0.5% chance to get 1000$, 50 % chance to get 10$, 49.5% to get stuck (select return null)
+///A cheated wheel with 0.5% chance to get 1000$, 50 % chance to get 10$, 49.5% to get stuck (return null)
 var realWheel = selectorFactory.createFrequencySelectorWithReplacement(
     [['1000$', 50]
         , ['10$', 5000]
