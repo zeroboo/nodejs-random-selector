@@ -3,7 +3,8 @@
 # random-selector
 A nodejs module contains utilities for randomly selecting elements
 # Status
-CircleCI: [![CircleCI](https://circleci.com/gh/zeroboo/nodejs-random-selector.svg?style=svg)](https://circleci.com/gh/zeroboo/nodejs-random-selector)
+[![CircleCI](https://circleci.com/gh/zeroboo/nodejs-random-selector.svg?style=svg)](https://circleci.com/gh/zeroboo/nodejs-random-selector)
+https://travis-ci.org/zeroboo/nodejs-random-selector.svg?branch=master
 # Features
 - Selecting elements with & without replacement 
 - Select elements with different frequencies
