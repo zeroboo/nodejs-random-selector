@@ -1,3 +1,4 @@
+'use strict';
 var selectorFactory = require('../src/index');
 const assert = require('chai').assert;
 const expect = require('chai').expect;
