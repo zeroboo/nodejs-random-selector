@@ -86,7 +86,7 @@ var chigurhCoin = selectorFactory.createSimpleSelectorWithReplacement(['Head', '
 console.log("The most you ever lost in a coin toss? ", chigurhCoin.select());
 ```
 
-[    5. daisy meter: a love evaluation tool base on randomness](https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not)
+[    5. daisy meter: a interpersonal relationships evaluation tool base on randomness](https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not)
 ```javascript
 var daisy = selectorFactory.createSimpleSelectorWithoutReplacement([]);
 for(let i=0;i < daisy.getRandomer().getRandomIntBetween(4, 8);i++)
