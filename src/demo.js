@@ -1,3 +1,4 @@
+'use strict'
 const selectorFactory = require("./index");
 
 console.log("----- Simulating selecting balls from a bag without returning: ");

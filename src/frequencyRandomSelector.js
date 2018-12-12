@@ -1,3 +1,4 @@
+'use strict'
 const RandomSelector = require('./randomSelector');
 const DEBUG_RANDOM_SELECTOR = true;
 const util = require('util');

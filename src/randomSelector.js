@@ -1,3 +1,4 @@
+'use strict'
 const Randomer = require('./randomer');
 class RandomSelector
 {
