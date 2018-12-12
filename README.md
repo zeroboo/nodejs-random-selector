@@ -4,19 +4,20 @@
 
 A nodejs module contains utilities for randomly selecting elements
 
----
+
 # Status
 
 ![CircleCI](https://circleci.com/gh/zeroboo/nodejs-random-selector.svg?style=svg)
 
 ![travis-ci](https://travis-ci.org/zeroboo/nodejs-random-selector.svg?branch=master)
 
----
+
 # Features
 - Selecting elements with & without replacement 
 - Select elements with different frequencies
 
 # Build
+
 On project folder run
 ```npm
 npm install
@@ -30,7 +31,7 @@ Run demo
 npm start
 ```
 
----
+
 # Usage
 
 ### Install to your project:
