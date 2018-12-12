@@ -1,3 +1,4 @@
+'use strict';
 var assert = require('chai').assert;
 
 var Randomer = require('../src/randomer');
@@ -65,7 +66,7 @@ describe('Test randomer', function() {
         it("Randomness: mean around a half of max_int", function(){
             var testCount = 10000;
             var numbers = Array();
-            for(i=0;i<testCount;i++)
+            for(var i=0;i<testCount;i++)
             {
                 numbers.push(randomer.getRandomInt());
             }
@@ -84,7 +85,7 @@ describe('Test randomer', function() {
             var min = 0;
             var max = 100;
             var invalidNumber = Array(); 
-            for(i=0;i<testCount;i++)
+            for(var i=0;i<testCount;i++)
             {
                 var random = randomer.getRandomIntBetween(min, max);
                 if(random < min || random >= max)
@@ -104,7 +105,7 @@ describe('Test randomer', function() {
             var numbers = Array();
             var min = 0;
             var max = 100;
-            for(i=0;i<testCount;i++)
+            for(var i=0;i<testCount;i++)
             {
                 numbers.push(randomer.getRandomIntBetween(min, max));
             }
@@ -118,7 +119,7 @@ describe('Test randomer', function() {
             var min = 0;
             var max = 10;
             var includeMin = 0;
-            for(i=0;i<testCount;i++)
+            for(var i=0;i<testCount;i++)
             {
                 var random = randomer.getRandomIntBetween(min, max);
                 if(random == min)
@@ -134,7 +135,7 @@ describe('Test randomer', function() {
             var min = 0;
             var max = 10;
             var includeMax = false;
-            for(i=0;i<testCount;i++)
+            for(var i=0;i<testCount;i++)
             {
                 var random = randomer.getRandomIntBetween(min, max);
                 if(random == max)

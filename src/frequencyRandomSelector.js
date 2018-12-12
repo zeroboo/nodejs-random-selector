@@ -137,7 +137,7 @@ class FreequencyRandomSelector extends RandomSelector {
         if(randomFrequency < this.accumulateFrequencies[idx])
         {
           foundIdx = idx;
-          if(foundIdx >=0 && foundIdx<this.elements.length)
+          if(foundIdx >=0 && foundIdx < this.elements.length)
           {
             selectedElement = this.elements.splice(idx, 1);
             this.frequencies.splice(idx, 1);

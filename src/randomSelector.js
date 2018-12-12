@@ -15,15 +15,14 @@ class RandomSelector
 
         this.debug('RandomSelector.Constructor', this.randomer.getName(), this.hasReplacement);
     }
-    
     setRelacementMode(hasReplacement) {
-        
       this.hasReplacement = hasReplacement;
       this.debug("setReplacementMode", this.hasReplacement);
     }
     hasRelacementMode() {
         return this.hasReplacement;
     }
+    
     debug (){
         if(this.DEBUG){
             console.log("[DEBUG]RandomSelector: ", arguments);
@@ -31,7 +30,7 @@ class RandomSelector
     }
     setElements(elements)
     {
-        
+
     }
     /**
      * get number of elements
@@ -47,15 +46,13 @@ class RandomSelector
     }
     select()
     {
-
     }
     selectWithoutReplacement()
     {
-
     }
     selectWithReplacement()
     {
-        
+
     }
     getRandomer()
     {

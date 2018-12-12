@@ -56,6 +56,22 @@ describe('Test FrequencyRandomSelector', function() {
 
             }, Error, "");
         });
+        it("Undefined elements, has error", function(){
+            assert.throws(function(){
+                var selector = selectorFactory.createFrequencySelectorWithReplacement(undefined, 100);
+
+            }, Error, "");
+        });
+        it("Elements not an array, has error", function(){
+            assert.throws(function(){
+                var selector = selectorFactory.createFrequencySelectorWithReplacement({value: ''}, 100);
+            }, Error, "");
+        });
+        it("Elements is string, has error", function(){
+            assert.throws(function(){
+                var selector = selectorFactory.createFrequencySelectorWithReplacement('[1, 2, 3, 4]', 100);
+            }, Error, "");
+        });
         it("Elements without frequency, has error", function(){
             assert.throws(function(){
                 var selector = selectorFactory.createFrequencySelectorWithReplacement([
@@ -72,7 +88,7 @@ describe('Test FrequencyRandomSelector', function() {
                 );
             }, Error, "");
         });
-        it("Elements with string frequency, has error", function(){
+        it("Element with string frequency, has error", function(){
             assert.throws(function(){
                 var selector = selectorFactory.createFrequencySelectorWithReplacement([
                     ['A', 10], ['B', 10], [1, "ten"], [null, 10]]
@@ -80,7 +96,15 @@ describe('Test FrequencyRandomSelector', function() {
                 );
             }, Error, "");
         });
-        it("Elements with negative frequency, has error", function(){
+        it("Element is not an array, has error", function(){
+            assert.throws(function(){
+                var selector = selectorFactory.createFrequencySelectorWithReplacement([
+                    '', ['B', 10],[null, 10]]
+                    , 100
+                );
+            }, Error, "");
+        });
+        it("Element with negative frequency, has error", function(){
             assert.throws(function(){
                 var selector = selectorFactory.createFrequencySelectorWithReplacement([
                     ['A', 10], ['B', 10], [1, -10], [null, 10]]
@@ -89,6 +113,16 @@ describe('Test FrequencyRandomSelector', function() {
             }, Error, "");
         });
         
+    });
+    describe("#Test totalFrequency", function(){
+        it("Invalid totalFreequency, error", function(){
+            var selector = selectorFactory.createFrequencySelectorWithoutReplacement([
+                ['A', 10], ['B', 20], [1, 30], [null, 30]]
+            );
+            assert.throws(function(){
+                selector.setTotalFrequency('');
+            }, Error, "");
+        });
     });
     describe("#Construct selector without replacement", function(){
         it("Valid parameters, correct config", function(){
