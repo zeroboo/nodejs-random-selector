@@ -4,7 +4,8 @@
   "description": "Randomly select elements in a collection.",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha --reporter spec",
+    "test": "nyc --reporter=html --reporter=text mocha --timeout=5000",
+    "coverage": "nyc report --reporter=text-lcov --timeout=5000 | coveralls",
     "start": "node src/demo.js"
   },
   "repository": {
@@ -43,8 +44,10 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
     "eslint": "^5.10.0",
     "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
     "stats-array": "^0.1.2"
   }
 }
