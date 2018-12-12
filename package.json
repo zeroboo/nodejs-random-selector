@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "mocha",
-	"coverage": "nyc --reporter=html --reporter=text mocha --timeout=5000",
+	"coverage": "nyc --reporter=html mocha --timeout=5000",
+	
     "start": "node src/demo.js"
   },
   "repository": {
