@@ -80,7 +80,7 @@ console.log("Total points after 10 rolls: ", points);
 ![Image of flipping coin](./doc/img/fipping_coin.jpg)
 ```javascript
 var chigurhCoin = selectorFactory.createSimpleSelectorWithReplacement(['Head', 'Tail']);
-console.log("Your call: ", chigurhCoin.select());
+console.log("The most you ever lost in a coin toss? ", chigurhCoin.select());
 ```
 
 [    5. daisy meter](https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not)
