@@ -46,7 +46,7 @@ const selectorFactory = require("random-selector");
 
 ### Examples of creating selectors
     
-    1. Blindly pick out balls in a bag without returning
+1. Blindly pick out balls in a bag without returning
 ```javascript
 var normalBag = selectorFactory.createSimpleSelectorWithoutReplacement([
     {color:'red'}, 
@@ -57,7 +57,7 @@ console.log("Selected ball: ", normalBag.select());
 console.log("Bag now empty, you've got no balls to select: ", normalBag.select());
 ```
 
-    2. Blindly pick out balls in a bag then return to the bag
+2. Blindly pick out balls in a bag then return to the bag
 ```javascript
 var magicBag = selectorFactory.createSimpleSelectorWithReplacement([
     {color:'red', id:'left'}, 
@@ -68,13 +68,13 @@ console.log("ball checked: ", magicBag.select());
 console.log("Still have balls: ", magicBag.select());
 ```
 
-[   3. Flipping an unbiased coin](https://en.wikipedia.org/wiki/Coin_flipping)
+3. [Flipping an unbiased coin](https://en.wikipedia.org/wiki/Coin_flipping)
 ```javascript
 var chigurhCoin = selectorFactory.createSimpleSelectorWithReplacement(['Head', 'Tail']);
 console.log("The most you ever lost in a coin toss? ", chigurhCoin.select());
 ```
     
-    3. Simulating rolling dice
+4. Simulating rolling dice
 ```javascript
 var dice = selectorFactory.createSimpleSelectorWithReplacement([1, 2, 3, 4, 5, 6]);
 var points = Array();
@@ -85,7 +85,7 @@ for(let i = 0;i<10;i++)
 console.log("Total points after 10 rolls: ", points);
 ```
 
-[   5. daisy meter: a interpersonal relationship evaluation tool base on randomness](https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not)
+5. [daisy meter: a interpersonal relationship evaluation tool base on randomness](https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not)
 ```javascript
 var daisy = selectorFactory.createSimpleSelectorWithoutReplacement([]);
 for(let i=0;i < daisy.getRandomer().getRandomIntBetween(4, 8);i++)
@@ -100,7 +100,7 @@ while(daisy.select()!=null)
 }
 ```    
 
-    6. Simulating wheel of fortune:
+6. Simulating wheel of fortune:
 ![Image Wheel of Fortune](./doc/img/wheel_fortune.jpg)
 ```javascript
 var fortuneWheel = selectorFactory.createFrequencySelectorWithReplacement(
@@ -120,7 +120,7 @@ var fortuneWheel = selectorFactory.createFrequencySelectorWithReplacement(
 );
 console.log("Prize: ", fortuneWheel.select());
 ```    
-
+  
 ```javascript
 ///A cheated wheel with 0.5% chance to get 1000$, 50 % chance to get 10$, 49.5% to get stuck (return null)
 var realWheel = selectorFactory.createFrequencySelectorWithReplacement(
