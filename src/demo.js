@@ -8,16 +8,17 @@ var normalBag = selectorFactory.createSimpleSelectorWithoutReplacement([
 ]);
 console.log("Selected ball: ", normalBag.select());
 console.log("Selected ball: ", normalBag.select());
-console.log("Bag now empty, no ball left to be selected: ", normalBag.select());
+console.log("You've got no balls when try to select: ", normalBag.select(), ", ball left: ", normalBag.getElementCount());;
+
 
 console.log("----- Simulating selecting balls from a bag with returning: ");
 var magicBag = selectorFactory.createSimpleSelectorWithReplacement([
     {color:'red', id:'left'}, 
     {color:'black', id:'right'}, 
 ]);
-console.log("Selected ball: ", magicBag.select());
-console.log("Selected ball: ", magicBag.select());
-console.log("Still have balls: ", magicBag.select());
+console.log("ball checked: ", magicBag.select());
+console.log("ball checked: ", magicBag.select());
+console.log("Still have balls: ", magicBag.getElements().length);
 
 console.log("----- Simulating rolling dice: ");
 var dice = selectorFactory.createSimpleSelectorWithReplacement([1, 2, 3, 4, 5, 6]);

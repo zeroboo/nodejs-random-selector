@@ -184,10 +184,10 @@ describe('Test FrequencyRandomSelector', function() {
         it("Elements with string frequency, has error", function(){
             assert.throws(function(){
                 var selector = selectorFactory.createFrequencySelectorWithoutReplacement([
-                    ['A', 10], ['B', 10], [1, "ten"], [null, 10]]
+                    ['A', 10], ['B', 10], ['C', "ten"]]
                     , 100
                 );
-            }, Error, "");
+            }, Error, "Error: invalid element at index 2: C,ten (frequency is not a number)");
         });
         it("Elements with negative frequency, has error", function(){
             assert.throws(function(){

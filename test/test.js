@@ -13,8 +13,11 @@ describe('Test random-selector constructing', function() {
   describe('#TestFactory', function() {
     it("Construct success", function(){
       var factory = SelectorFactory;
+      
       factory.DEBUG = true;
       factory.debug("Factory constructed!");
+      factory.DEBUG = false;
+      factory.debug("You don't see me!");
     });
   });
 });

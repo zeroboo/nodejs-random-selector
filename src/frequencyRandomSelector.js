@@ -144,7 +144,6 @@ class FreequencyRandomSelector extends RandomSelector {
             this.calculateAccumulateFrequency(this.updateTotalFreequencyAfterSelect);
             break;
           }
-          
         }
     }
     this.debug("selectWithReplacement", randomFrequency, this.totalFrequency, foundIdx, selectedElement, this.accumulateFrequencies);

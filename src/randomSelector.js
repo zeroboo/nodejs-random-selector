@@ -12,7 +12,7 @@ class RandomSelector
             this.randomer = randomer;
         }
         this.hasReplacement = true;
-
+        this.elements=[];
         this.debug('RandomSelector.Constructor', this.randomer.getName(), this.hasReplacement);
     }
     setRelacementMode(hasReplacement) {
@@ -28,9 +28,10 @@ class RandomSelector
             console.log("[DEBUG]RandomSelector: ", arguments);
         }
     }
+    
     setElements(elements)
     {
-
+        
     }
     /**
      * get number of elements
@@ -44,16 +45,20 @@ class RandomSelector
     {
         return this.elements;
     }
+
     select()
     {
+        return null;
     }
     selectWithoutReplacement()
     {
+        return null;
     }
     selectWithReplacement()
     {
-
+        return null;
     }
+
     getRandomer()
     {
         return this.randomer;

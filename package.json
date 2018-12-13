@@ -1,12 +1,11 @@
 {
   "name": "random-selector",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Randomly select elements in a collection.",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha",
-	"coverage": "nyc --reporter=html mocha --timeout=5000",
-	
+    "test": "mocha --timeout=5000",
+	  "coverage": "nyc mocha --timeout=5000",
     "start": "node src/demo.js"
   },
   "repository": {
