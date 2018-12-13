@@ -1,7 +1,7 @@
 {
   "name": "random-selector",
-  "version": "1.0.10",
-  "description": "Randomly select elements in a collection.",
+  "version": "1.0.11",
+  "description": "Randomly select objects.",
   "main": "src/index.js",
   "scripts": {
     "test": "nyc --reporter=text-lcov mocha",
@@ -18,25 +18,19 @@
   "keywords": [
     "randomize",
     "random",
-    "random",
     "duplication",
-    "random",
     "pick",
-    "random",
     "select",
     "random sample",
     "sampling",
     "sample",
     "random-utility",
-    "collection random",
-    "random collection",
-    "random element",
     "select with replacement",
     "select without replacement",
     "sampling with replacement",
     "sampling without replacement",
-    "statistic",
-    "gaming"
+    "statistic", "probability",
+    "gaming", "random pick"
   ],
   "author": "zeroboo",
   "license": "ISC",
