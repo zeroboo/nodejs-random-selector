@@ -68,6 +68,12 @@ console.log("ball checked: ", magicBag.select());
 console.log("Still have balls: ", magicBag.select());
 ```
 
+[   3. Flipping an unbiased coin](https://en.wikipedia.org/wiki/Coin_flipping)
+```javascript
+var chigurhCoin = selectorFactory.createSimpleSelectorWithReplacement(['Head', 'Tail']);
+console.log("The most you ever lost in a coin toss? ", chigurhCoin.select());
+```
+    
     3. Simulating rolling dice
 ```javascript
 var dice = selectorFactory.createSimpleSelectorWithReplacement([1, 2, 3, 4, 5, 6]);
@@ -79,14 +85,7 @@ for(let i = 0;i<10;i++)
 console.log("Total points after 10 rolls: ", points);
 ```
 
-    4. Flipping coin
-![Image of flipping coin](./doc/img/fipping_coin.jpg)
-```javascript
-var chigurhCoin = selectorFactory.createSimpleSelectorWithReplacement(['Head', 'Tail']);
-console.log("The most you ever lost in a coin toss? ", chigurhCoin.select());
-```
-
-[    5. daisy meter: a interpersonal relationship evaluation tool base on randomness](https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not)
+[   5. daisy meter: a interpersonal relationship evaluation tool base on randomness](https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not)
 ```javascript
 var daisy = selectorFactory.createSimpleSelectorWithoutReplacement([]);
 for(let i=0;i < daisy.getRandomer().getRandomIntBetween(4, 8);i++)
@@ -100,6 +99,7 @@ while(daisy.select()!=null)
     console.log(meter?'He loves me':'He loves me not');
 }
 ```    
+
     6. Simulating wheel of fortune:
 ![Image Wheel of Fortune](./doc/img/wheel_fortune.jpg)
 ```javascript
@@ -120,6 +120,7 @@ var fortuneWheel = selectorFactory.createFrequencySelectorWithReplacement(
 );
 console.log("Prize: ", fortuneWheel.select());
 ```    
+
 ```javascript
 ///A cheated wheel with 0.5% chance to get 1000$, 50 % chance to get 10$, 49.5% to get stuck (return null)
 var realWheel = selectorFactory.createFrequencySelectorWithReplacement(
