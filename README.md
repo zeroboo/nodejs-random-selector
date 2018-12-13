@@ -54,7 +54,7 @@ var normalBag = selectorFactory.createSimpleSelectorWithoutReplacement([
 ]);
 console.log("Selected ball: ", normalBag.select());
 console.log("Selected ball: ", normalBag.select());
-console.log("Bag now empty, no ball left to be selected: ", normalBag.select());
+console.log("Bag now empty, you've got no balls to select: ", normalBag.select());
 ```
 
     2. Blindly pick out balls in a bag with returning
