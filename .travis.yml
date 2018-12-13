@@ -1,7 +1,6 @@
 language: node_js
 node_js:
-  - iojs
-  - node
+  - v8.11.4
 before_install:
   - npm i -g npm@5.6.0
 script:
