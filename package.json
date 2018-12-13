@@ -4,8 +4,8 @@
   "description": "Randomly select elements in a collection.",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha --timeout=5000",
-	  "coverage": "nyc mocha --timeout=5000",
+    "test": "mocha --timeout=3000",
+	  "coverage": "nyc report --timeout=3000 --reporter=text-lcov | coveralls",
     "start": "node src/demo.js"
   },
   "repository": {
