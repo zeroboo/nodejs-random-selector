@@ -12,7 +12,7 @@ A nodejs module contains utilities for randomly selecting elements
 
 ![CircleCI](https://circleci.com/gh/zeroboo/nodejs-random-selector.svg?style=svg)
 ![travis-ci](https://travis-ci.org/zeroboo/nodejs-random-selector.svg?branch=master)
-
+[![Coverage Status](https://coveralls.io/repos/github/zeroboo/nodejs-random-selector/badge.svg?branch=master)](https://coveralls.io/github/zeroboo/nodejs-random-selector?branch=master)
 
 # Features
 - Selecting elements with & without replacement 
