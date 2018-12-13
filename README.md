@@ -7,8 +7,10 @@ A nodejs module contains utilities for randomly selecting elements
 
 # Status
 
-![CircleCI](https://circleci.com/gh/zeroboo/nodejs-random-selector.svg?style=svg)
+[![NPM](https://nodei.co/npm/random-selector.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/random-selector/)
 
+
+![CircleCI](https://circleci.com/gh/zeroboo/nodejs-random-selector.svg?style=svg)
 ![travis-ci](https://travis-ci.org/zeroboo/nodejs-random-selector.svg?branch=master)
 
 
