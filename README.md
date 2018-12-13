@@ -126,8 +126,7 @@ var realWheel = selectorFactory.createFrequencySelectorWithReplacement(
     [['1000$', 50]
         , ['10$', 5000]
     ]
-    , 10000 /*total frequency is larger than sum of all element's freequency
-    it means there is chance for selecting failed */
+    , 10000 /*total frequency is larger than sum of all element's freequency it means selecting may failed (return null)*/
 );
 console.log("Prize: ", realWheel.select());
 ```
