@@ -54,17 +54,17 @@ var normalBag = selectorFactory.createSimpleSelectorWithoutReplacement([
 ]);
 console.log("Selected ball: ", normalBag.select());
 console.log("Selected ball: ", normalBag.select());
-console.log("Bag now empty, no ball left to be selected: ", normalBag.select());
+console.log("Bag now empty, you've got no balls to select: ", normalBag.select());
 ```
 
-    2. Blindly pick out balls in a bag with returning
+    2. Blindly pick out balls in a bag then return to the bag
 ```javascript
 var magicBag = selectorFactory.createSimpleSelectorWithReplacement([
     {color:'red', id:'left'}, 
     {color:'black', id:'right'}, 
 ]);
-console.log("Selected ball: ", magicBag.select());
-console.log("Selected ball: ", magicBag.select());
+console.log("ball checked: ", magicBag.select());
+console.log("ball checked: ", magicBag.select());
 console.log("Still have balls: ", magicBag.select());
 ```
 
@@ -126,7 +126,7 @@ var realWheel = selectorFactory.createFrequencySelectorWithReplacement(
     [['1000$', 50]
         , ['10$', 5000]
     ]
-    , 10000///basispoint based 
+    , 10000 /*total frequency > sum of all element's freequency: it means selecting may failed (return null)*/
 );
 console.log("Prize: ", realWheel.select());
 ```
