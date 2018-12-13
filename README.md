@@ -57,14 +57,14 @@ console.log("Selected ball: ", normalBag.select());
 console.log("Bag now empty, you've got no balls to select: ", normalBag.select());
 ```
 
-    2. Blindly pick out balls in a bag with returning
+    2. Blindly pick out balls in a bag then return to the bag
 ```javascript
 var magicBag = selectorFactory.createSimpleSelectorWithReplacement([
     {color:'red', id:'left'}, 
     {color:'black', id:'right'}, 
 ]);
-console.log("Selected ball: ", magicBag.select());
-console.log("Selected ball: ", magicBag.select());
+console.log("ball checked: ", magicBag.select());
+console.log("ball checked: ", magicBag.select());
 console.log("Still have balls: ", magicBag.select());
 ```
 
