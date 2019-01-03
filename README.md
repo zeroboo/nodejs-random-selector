@@ -2,7 +2,7 @@
 
 # random-selector
 
-A nodejs module for randomly selecting elements
+A nodejs module for randomly selecting objects
 
 
 # Status
@@ -16,8 +16,8 @@ A nodejs module for randomly selecting elements
 ![Downloads](https://img.shields.io/npm/dt/random-selector.svg)
 
 # Features
-- Selecting elements with & without replacement 
-- Select elements with different frequencies
+- Selecting objects with & without replacement 
+- Select objects with different frequencies
 
 # Build
 
