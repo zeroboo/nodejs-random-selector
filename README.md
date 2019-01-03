@@ -66,8 +66,8 @@ var magicBag = selectorFactory.createSimpleSelectorWithReplacement([
     {color:'red', id:'left'}, 
     {color:'black', id:'right'}, 
 ]);
-console.log("ball checked: ", magicBag.select());
-console.log("ball checked: ", magicBag.select());
+console.log("Ball checked: ", magicBag.select());
+console.log("Ball checked: ", magicBag.select());
 console.log("Still have balls: ", magicBag.select());
 ```
 
@@ -119,7 +119,7 @@ var fortuneWheel = selectorFactory.createFrequencySelectorWithReplacement(
         , ['600$', 10]
         , ['200$', 10]
         , ['350$', 10]
-    ] ///Total frequency is 1200
+    ] ///Total frequency is 120
 );
 console.log("Prize: ", fortuneWheel.select());
 ```    
