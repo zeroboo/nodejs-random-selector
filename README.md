@@ -101,6 +101,10 @@ while(daisy.select()!=null)
     meter = !meter;
     console.log(meter?'He loves me':'He loves me not');
 }
+if(!meter){
+    console.log("He fuckin' hates me, try another daisy!");
+}
+
 ```    
 
 6. Simulating wheel of fortune:
