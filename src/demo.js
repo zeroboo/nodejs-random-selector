@@ -38,11 +38,10 @@ for(let i=0;i < daisy.getRandomer().getRandomIntBetween(4, 8);i++)
 var meter = true;
 while(daisy.select()!=null)
 {
-    meter = !meter;
     console.log(meter?'He loves me':'He loves me not');
 }
 if(!meter){
-    console.log('try another daisy');
+    console.log("He fuckin' hates me, try another daisy!");
 }
 
 console.log("----- Simulating flipping coin: ");
