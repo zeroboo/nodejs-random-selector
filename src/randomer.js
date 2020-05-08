@@ -1,14 +1,23 @@
-
-function Randomer()
+'use strict'
+function Randomer(name)
 {
+    this.name = 'DefaultRandomer';
+    if(name!=undefined && name != null)
+    {
+        this.name = name;
+    }
     
+    this.typeName = 'Randomer';
 };
    
 Randomer.prototype.getRandomInt = function(){
     return Math.floor(Math.random()*this.MAX_INT);
 }
+Randomer.prototype.getTypeName = function(){
+    return this.typeName;
+}
 Randomer.prototype.getName = function(){
-    return "DefaultRandomer";
+    return this.name;
 }
 
 

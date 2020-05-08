@@ -67,7 +67,7 @@ RandomSelectorFactory.prototype.createFrequencySelectorWithReplacement = functio
     return selector;
 } 
 RandomSelectorFactory.prototype.debug = function(){
-    if(DEBUG_RANDOM_SELECTOR_FACTORY){
+    if(this.DEBUG){
             console.log("RandomSelectorFactory: ", arguments);
     }
 }

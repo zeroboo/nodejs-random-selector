@@ -1,0 +1,28 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/mern-starter
+    docker:
+      - image: circleci/node:8.11.4
+    steps:
+      - checkout
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@5.6.0'
+      - run:
+          name: install
+          command: npm install
+      - run:
+          name: test
+          command: npm test
+      - run:
+          name: test report html
+          command: npm run test-clear
+      - store_artifacts:
+          path: test-results.xml
+          prefix: tests
+      - store_artifacts:
+          path: coverage
+          prefix: coverage
+      - store_test_results:
+          path: test-results.xml

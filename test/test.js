@@ -1,6 +1,6 @@
 var assert = require('assert');
 var expect = require('chai').expect;
-
+var SelectorFactory = require('../src/index');
 describe('Test random-selector constructing', function() {
   before(function() {
     console.log("BeforeSuite!");
@@ -10,8 +10,15 @@ describe('Test random-selector constructing', function() {
   });
   
   //Test constructor
-  describe('#Test', function() {
-    //assert.equal(false, true);
+  describe('#TestFactory', function() {
+    it("Construct success", function(){
+      var factory = SelectorFactory;
+      
+      factory.DEBUG = true;
+      factory.debug("Factory constructed!");
+      factory.DEBUG = false;
+      factory.debug("You don't see me!");
+    });
   });
 });
 

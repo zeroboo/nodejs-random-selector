@@ -1,10 +1,26 @@
+
+
 # random-selector
-A nodejs module contains utilities for randomly selecting elements
+
+A nodejs module for randomly selecting objects
+
+
+# Status
+
+[![NPM](https://nodei.co/npm/random-selector.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/random-selector/)
+
+
+![CircleCI](https://circleci.com/gh/zeroboo/nodejs-random-selector.svg?style=svg)
+![travis-ci](https://travis-ci.org/zeroboo/nodejs-random-selector.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/zeroboo/nodejs-random-selector/badge.svg?branch=master)](https://coveralls.io/github/zeroboo/nodejs-random-selector?branch=master)
+![Downloads](https://img.shields.io/npm/dt/random-selector.svg)
+
 # Features
-- Selecting elements with & without replacement 
-- Select elements with different frequencies
----
+- Selecting objects with & without replacement 
+- Select objects with different frequencies
+
 # Build
+
 On project folder run
 ```npm
 npm install
@@ -18,7 +34,7 @@ Run demo
 npm start
 ```
 
----
+
 # Usage
 
 ### Install to your project:
@@ -33,56 +49,65 @@ const selectorFactory = require("random-selector");
 
 ### Examples of creating selectors
     
-    1. Blindly pick out balls in a bag without returning
+1. Blindly pick out balls in a bag without returning
 ```javascript
-var bagsNormal = selectorFactory.createSimpleSelectorWithoutReplacement([
+var normalBag = selectorFactory.createSimpleSelectorWithoutReplacement([
     {color:'red'}, 
     {color:'black'}, 
-    {color:'red'}, 
 ]);
-console.log("Selected ball: ", bagsNormal.select());
-console.log("Selected ball: ", bagsNormal.select());
-console.log("Selected ball: ", bagsNormal.select());
-console.log("Bag now empty, no ball selected: ", bagsNormal.select());
+console.log("Selected ball: ", normalBag.select());
+console.log("Selected ball: ", normalBag.select());
+console.log("Bag now empty, you've got no balls to select: ", normalBag.select());
 ```
-    2. Blindly pick out balls in a bag with returning
+
+2. Blindly pick out balls in a bag then return to the bag
 ```javascript
-console.log("----- Simulating selecting balls from a bag with returning: ");
-var bagsMagic = selectorFactory.createSimpleSelectorWithoutReplacement([
-    {color:'red'}, 
-    {color:'black'}, 
-    {color:'red'}, 
+var magicBag = selectorFactory.createSimpleSelectorWithReplacement([
+    {color:'red', id:'left'}, 
+    {color:'black', id:'right'}, 
 ]);
-console.log("Selected ball: ", bagsMagic.select());
-console.log("Selected ball: ", bagsMagic.select());
-console.log("Selected ball: ", bagsMagic.select());
-console.log("Still have ball selected: ", bagsMagic.select());
+console.log("Ball checked: ", magicBag.select());
+console.log("Ball checked: ", magicBag.select());
+console.log("Still have balls: ", magicBag.select());
 ```
-    3. Simulating rolling dice
+
+3. [Flipping an unbiased coin](https://en.wikipedia.org/wiki/Coin_flipping)
 ```javascript
-console.log("--- Simulating rolling dice: ");
-var diceSelector = selectorFactory.createSimpleSelectorWithReplacement([1, 2, 3, 4, 5, 6]);
+var chigurhCoin = selectorFactory.createSimpleSelectorWithReplacement(['Head', 'Tail']);
+console.log("The most you ever lost in a coin toss? ", chigurhCoin.select());
+```
+    
+4. Simulating rolling dice
+```javascript
+var dice = selectorFactory.createSimpleSelectorWithReplacement([1, 2, 3, 4, 5, 6]);
 var points = Array();
 for(let i = 0;i<10;i++)
 {
-    points.push(diceSelector.select());
+    points.push(dice.select());
 }
 console.log("Total points after 10 rolls: ", points);
+```
 
-```
-    3. Simulating flipping coin
-![Image of flipping coin](./doc/img/fipping_coin.jpg)
+5. [daisy meter: a interpersonal relationship evaluation tool base on nature](https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not)
 ```javascript
-var flipSelector = selectorFactory.createSimpleSelectorWithReplacement(['Head', 'Tail']);
-var faces = Array();
-for(let i = 0;i<10;i++)
+var daisy = selectorFactory.createSimpleSelectorWithoutReplacement([]);
+for(let i=0;i < daisy.getRandomer().getRandomIntBetween(4, 8);i++)
 {
-    faces.push(flipSelector.select());
+    daisy.getElements().push('petal');
 }
-console.log("Coin toss result: ", faces);
-```
-    
-    4. Simulating wheel of fortune:
+var meter = true;
+while(daisy.select()!=null)
+{
+    meter = !meter;
+    console.log(meter?'He loves me':'He loves me not');
+}
+if(!meter){
+    console.log("He fuckin' hates me, try another daisy!");
+}
+
+```    
+
+6. Simulating wheel of fortune:
 ![Image Wheel of Fortune](./doc/img/wheel_fortune.jpg)
 ```javascript
 var fortuneWheel = selectorFactory.createFrequencySelectorWithReplacement(
@@ -98,26 +123,20 @@ var fortuneWheel = selectorFactory.createFrequencySelectorWithReplacement(
         , ['600$', 10]
         , ['200$', 10]
         , ['350$', 10]
-        , ['1000$', 10]
-    ] ///Total frequency is 1200
+    ] ///Total frequency is 120
 );
-
-for(let i = 0;i<10;i++)
-{
-    console.log("Bonus: ", fortuneWheel.select());
-}
+console.log("Prize: ", fortuneWheel.select());
 ```    
+  
 ```javascript
-/*A modified wheel with 0.5% chance to get 1000$
-, 90 % chance to get 10$
-, 9.5% to get stuck (select return null) O_O!
-*/
-var cheatedWheel = selectorFactory.createFrequencySelectorWithReplacement(
+///A cheated wheel with 0.5% chance to get 1000$, 50 % chance to get 10$, 49.5% to get stuck (return null)
+var realWheel = selectorFactory.createFrequencySelectorWithReplacement(
     [['1000$', 50]
-        , ['10$', 9000]
+        , ['10$', 5000]
     ]
-    , 10000///base is basispoint
+    , 10000 /*total frequency > sum of all element's freequency: it means selecting may failed (return null)*/
 );
+console.log("Prize: ", realWheel.select());
 ```
 
     

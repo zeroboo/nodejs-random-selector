@@ -35,6 +35,8 @@ describe('Test SimpleRandomSelector constructing', function() {
     
     it("New with valid parameters: no error!", function(){
       var selector = selectorFactory.createSimpleSelectorWithoutReplacement([1, 2, 3, 5]);
+      selector.DEBUG = true;
+      selector.debug('Constructed!');
     });
 
     it("New with valid parameters: correct replacementMode", function(){

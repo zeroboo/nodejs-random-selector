@@ -1,3 +1,4 @@
+'use strict'
 const Randomer = require('./randomer');
 class RandomSelector
 {
@@ -11,23 +12,23 @@ class RandomSelector
             this.randomer = randomer;
         }
         this.hasReplacement = true;
-
+        this.elements=[];
         this.debug('RandomSelector.Constructor', this.randomer.getName(), this.hasReplacement);
     }
-    
     setRelacementMode(hasReplacement) {
-        
       this.hasReplacement = hasReplacement;
       this.debug("setReplacementMode", this.hasReplacement);
     }
     hasRelacementMode() {
         return this.hasReplacement;
     }
+    
     debug (){
         if(this.DEBUG){
             console.log("[DEBUG]RandomSelector: ", arguments);
         }
     }
+    
     setElements(elements)
     {
         
@@ -44,19 +45,23 @@ class RandomSelector
     {
         return this.elements;
     }
+
     select()
     {
-
+        return null;
     }
     selectWithoutReplacement()
     {
-
+        return null;
     }
     selectWithReplacement()
     {
-        
+        return null;
     }
 
-
+    getRandomer()
+    {
+        return this.randomer;
+    }
 }
 module.exports = RandomSelector;
