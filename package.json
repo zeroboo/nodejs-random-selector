@@ -5,7 +5,8 @@
   "main": "src/randomSelector.js",
   "scripts": {
     "test": "mocha --reporter spec",
-    "start": "node src/demo.js"
+    "start": "node src/demo.js",
+    "test-clear": "nyc --reporter=html --reporter=text mocha"
   },
   "repository": {
     "type": "git",
@@ -45,6 +46,7 @@
     "chai": "^4.2.0",
     "eslint": "^5.16.0",
     "mocha": "^7.1.2",
+    "nyc": "^15.0.1",
     "stats-array": "^0.1.2"
   }
 }

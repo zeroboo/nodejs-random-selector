@@ -19,10 +19,7 @@ jobs:
           name: test report html
           command: npm run test-clear
       - store_artifacts:
-          path: test-results.xml
-          prefix: tests
-      - store_artifacts:
           path: coverage
           prefix: coverage
       - store_test_results:
-          path: test-results.xml
+          path: coverage
