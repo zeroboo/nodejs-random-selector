@@ -6,7 +6,9 @@ var RandomSelector = require('./randomSelector');
 
 var DEBUG_RANDOM_SELECTOR_FACTORY = true;
 RandomSelector.prototype.DEBUG = false;
-
+/**
+ * Factory for random selectors
+ */
 function RandomSelectorFactory() {
    
 }
@@ -58,7 +60,7 @@ RandomSelectorFactory.prototype.createFrequencySelectorWithReplacement = functio
     var selector = new FrequencyRandomSelector();
     selector.setElements(elements);
     selector.setRelacementMode(true);
-    if(totalFrequency !== undefined)
+    if(totalFrequency)
     {
         selector.setTotalFrequency(totalFrequency);
     }

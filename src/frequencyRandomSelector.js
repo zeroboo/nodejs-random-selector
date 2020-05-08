@@ -1,3 +1,4 @@
+'use strict';
 const RandomSelector = require('./randomSelector');
 const DEBUG_RANDOM_SELECTOR = true;
 const util = require('util');
@@ -8,7 +9,7 @@ const util = require('util');
  * @param Number MaxRate Selector will random from 0 to MaxRate to select object
  */
 class FreequencyRandomSelector extends RandomSelector {
-  constructor(Randomer) {
+  constructor (Randomer) {
     super(Randomer)
     this.accumulateFrequencies = Array();
     this.frequencies = Array();
@@ -94,7 +95,12 @@ class FreequencyRandomSelector extends RandomSelector {
     this.debug("select", this.hasReplacement, selectedElement);
     return selectedElement;
   }
-  calculateAccumulateFrequency(calculateTotalFreequency)
+
+  /**
+   * Calculate cccumulate frequencies
+   * @param {boolean} updateTotalFrequency If true will update totalFrequency after calculating
+   */  
+  calculateAccumulateFrequency(updateTotalFrequency)
   {
     var tempTotalFrequency = 0;
     this.accumulateFrequencies = Array();
@@ -105,12 +111,16 @@ class FreequencyRandomSelector extends RandomSelector {
       this.accumulateFrequencies.push(tempTotalFrequency);
     }
     
-    if(calculateTotalFreequency)
+    if(updateTotalFrequency)
     {
       this.totalFrequency = tempTotalFrequency;
     }
 
   }
+  /**
+   * Select without remove from elements list
+   * @return {Object} Selected elements
+   */
   selectWithReplacement() {
     var randomFrequency = this.randomer.getRandomIntBetween(0, this.totalFrequency);
     var selectedElement = null;
