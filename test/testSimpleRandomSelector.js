@@ -225,6 +225,6 @@ describe('Test SimpleRandomSelector constructing', function() {
       }
       assert.isTrue(hasNull);
     });
-    it("Randomness: ")
+    
   });
 });

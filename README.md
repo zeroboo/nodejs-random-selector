@@ -88,7 +88,7 @@ for(let i = 0;i<10;i++)
 console.log("Total points after 10 rolls: ", points);
 ```
 
-5. [daisy meter: a interpersonal relationship evaluation tool base on nature](https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not)
+5. [daisy meter: a interpersonal relationship evaluation tool bases on nature](https://en.wikipedia.org/wiki/He_loves_me..._he_loves_me_not)
 ```javascript
 var daisy = selectorFactory.createSimpleSelectorWithoutReplacement([]);
 for(let i=0;i < daisy.getRandomer().getRandomIntBetween(4, 8);i++)
